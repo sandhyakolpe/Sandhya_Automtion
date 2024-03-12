@@ -1,0 +1,43 @@
+WebDriver driver=new ChromeDriver();
+driver.get("https://www.tendable.com");
+driver.manage().window().maximize();
+driver.manage().window().pageLoadTimout(Duration.ofSeconds(30));
+WebElement requestdemo=driver.findElement(By.xpath("//a[text()='Request A Demo']"));
+ if(requestdemo.isEnabled() && requestdemo.isSelected())
+  {
+            requestdemo.click();
+  }
+driver.findElement(By.xpath("//a[text()='Contact Us']")).click();
+driver.findElement(By.xpath("//button[text()='Contact']")).click();
+driver.findElement(By.id("form-input-fullName"")).sendKeys("John");
+driver.findElement(By.id("form-input-organisationName")).sendKeys("SA Technology");
+driver.findElement(By.id("form-input-cellPhone")).sendKeys("9888888888");
+driver.findElement(By.id("form-input-email"")).sendKeys("sa@gmail.com");
+driver.findElement(By.id("id="form-input-jobRole"")).sendKeys("Software test Engineer");
+WebElement wb=driver.findElement(By.xpath("//button[text()='Submit'][1]"));
+wb.click();
+Alert alt=driver.switchTo().alert();
+alt.accept();
+if(alt.getText())
+{
+     System.out.println("Test Case is pass");
+}
+else
+{
+    System.out.println("Test Case is fail");
+}
+
+
+=================================================================
+Run test case
+1.mvn clean
+2.mvn complie
+3.mvn test
+4.mvn validate 
+
+
+
+
+
+
+
